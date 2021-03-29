@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.fimilo</groupId>
-    <artifactId>fimilo</artifactId>
+    <artifactId>fimilo-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>fimilo</name>
 
@@ -24,4 +24,14 @@
         <module>fimilo-contracts</module>
         <module>fimilo-services</module>
     </modules>
+
+        <dependencies>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.16</version>
+                <scope>provided</scope>
+            </dependency>
+        </dependencies>
+
 </project>
