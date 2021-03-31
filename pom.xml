@@ -18,7 +18,7 @@
 
     <!--The properties registered here can be referenced by all child module.-->
     <properties>
-        <java.version>15</java.version>
+        <java.version>14</java.version>
     </properties>
 
    <!--Define modules in the project. All new modules needs to be registered here.-->
