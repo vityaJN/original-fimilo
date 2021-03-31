@@ -13,23 +13,20 @@
     </parent>
 
     <dependencies>
+        <!--Service returns DTOs of entities.-->
         <dependency>
             <groupId>com.fimilo</groupId>
             <artifactId>fimilo-contracts</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
-<!--
+        <!--//JakartaPersistence API -> connection to db is required
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
--->
+        -->
+        <!--TODO:viktork:investigate-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>

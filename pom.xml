@@ -16,11 +16,12 @@
     <name>fimilo</name>
     <packaging>pom</packaging>
 
+    <!--The properties registered here can be referenced by all child module.-->
     <properties>
         <java.version>15</java.version>
     </properties>
 
-
+   <!--Define modules in the project. All new modules needs to be registered here.-->
     <modules>
         <module>fimilo-frontend</module>
         <module>fimilo-backend</module>
@@ -28,6 +29,7 @@
         <module>fimilo-services</module>
     </modules>
 
+    <!--The dependencies registered here inherited by all child module.-->
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
