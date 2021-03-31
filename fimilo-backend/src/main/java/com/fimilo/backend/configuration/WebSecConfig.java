@@ -16,10 +16,7 @@ public class WebSecConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         CharacterEncodingFilter filter = new CharacterEncodingFilter();
         http.addFilterBefore(filter, CsrfFilter.class)
-                .formLogin()
-                .loginPage("/login").defaultSuccessUrl("/", true).permitAll()
-                .and()
                 .authorizeRequests()
-                .anyRequest().authenticated();
+                .anyRequest().permitAll();
     }
 }
