@@ -1,22 +1,56 @@
 package com.fimilo.backend.configuration;
 
+import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.web.csrf.CsrfFilter;
-import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
+import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 
 /**
  * Enables basic security.
  */
-@EnableWebSecurity
+@Configuration
 public class WebSecConfig extends WebSecurityConfigurerAdapter {
-
+/*
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         CharacterEncodingFilter filter = new CharacterEncodingFilter();
         http.addFilterBefore(filter, CsrfFilter.class)
                 .authorizeRequests()
                 .anyRequest().permitAll();
+    }*/
+
+
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {// @formatter:off
+        http.cors()
+                .and()
+                .authorizeRequests()
+                .antMatchers(HttpMethod.GET, "/user/info", "/api/foos/**")
+                .hasAuthority("SCOPE_read")
+                .antMatchers(HttpMethod.POST, "/api/foos")
+                .hasAuthority("SCOPE_write")
+                .anyRequest()
+                .authenticated()
+                .and()
+                .oauth2ResourceServer()
+                .jwt();
+    }// @formatter:on
+
+    @Bean
+    JwtDecoder jwtDecoder(OAuth2ResourceServerProperties properties) {
+        NimbusJwtDecoder jwtDecoder = NimbusJwtDecoder.withJwkSetUri(properties.getJwt().getJwkSetUri()).build();
+        jwtDecoder.setClaimSetConverter(new OrganizationSubClaimAdapter());
+        return jwtDecoder;
     }
+
+
+
+
+
+
 }

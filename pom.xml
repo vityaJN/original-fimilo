@@ -27,11 +27,12 @@
         <module>fimilo-backend</module>
         <module>fimilo-contracts</module>
         <module>fimilo-services</module>
+        <module>fimilo-jwt-authenticaion-server</module>
     </modules>
 
     <!--The dependencies registered here inherited by all child module.-->
     <dependencies>
-        <dependency>
+               <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.16</version>
