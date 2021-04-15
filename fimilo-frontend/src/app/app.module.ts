@@ -7,6 +7,7 @@ import { NavbarComponent } from './components/commons/navbar/navbar.component';
 import {ButtonModule} from 'primeng/button';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './components/login/login.component';
+import {ReactiveFormsModule} from "@angular/forms";
 import { FooterComponent } from './components/footer/footer.component';
 import { MainSiteComponent } from './components/main-site/main-site.component';
 import { RegisterBtnComponent } from './components/register-btn/register-btn.component';
@@ -24,7 +25,8 @@ import { RegisterBtnComponent } from './components/register-btn/register-btn.com
     BrowserModule,
     AppRoutingModule,
     ButtonModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
