@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 
 @Component({
@@ -8,9 +9,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit(): void {
+  showModal: boolean;
+  registerForm: FormGroup;
+  submitted = false;
+
+  show()
+  {
+    this.showModal = true; // Show-Hide Modal Check
+
+  }
+  //Bootstrap Modal Close event
+  hide()
+  {
+    this.showModal = false;
   }
 
+  constructor(private formBuilder: FormBuilder) { }
+
+  ngOnInit() {
+    this.registerForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
+  }
+// convenience getter for easy access to form fields
+  get f() { return this.registerForm.controls; }
+  onSubmit() {
+    this.submitted = true;
+    // stop here if form is invalid
+    if (this.registerForm.invalid) {
+      return;
+    }
+    if(this.submitted)
+    {
+      this.showModal = false;
+    }
+
+  }
 }
